@@ -11,3 +11,5 @@ This image's default user is `root`, but SteamCMD is installed as the `steam` us
 _Note: Running the `steamcmd.sh` as `root` will fail because the owner is the user `steam`, either swap the active user using `su steam` or use chown to change the ownership of the directory._
 
 Wine 11 no longer provides the `wine64` binary. You just need to call `wine` against the dedicated server binary, preferrably via `gosu` as the steam user.
+
+This image is also available via ghcr.io/teejo75/steamcmd-wine
