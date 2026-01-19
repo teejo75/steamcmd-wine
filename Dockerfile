@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends --no-install-su
     && gpg --dearmor -o /winehq-archive.key /tmp/winehq.key
 
 # Wine base
-FROM teejo75/steamcmd-base
+FROM ghcr.io/teejo75/steamcmd-base
 
 LABEL org.opencontainers.image.authors="teejo75"
 LABEL org.opencontainers.image.source="https://github.com/teejo75/steamcmd-wine"
