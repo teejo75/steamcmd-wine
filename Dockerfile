@@ -1,5 +1,6 @@
 # Intermediate
 FROM debian:stable-slim AS winehqkey
+ARG DEBIAN_FRONTEND=noninteractive
 ADD --chmod=755 https://dl.winehq.org/wine-builds/winehq.key /tmp/winehq.key
 RUN apt-get update && apt-get install -y --no-install-recommends --no-install-suggests \
 	gpg \
