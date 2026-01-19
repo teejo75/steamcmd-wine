@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image Build and Push
 
 on:
   push:
@@ -7,8 +7,10 @@ on:
       - 'Dockerfile'
   schedule:
     - cron: '30 1 1 * *'
+  workflow_dispatch:
+
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
       -
