@@ -12,6 +12,32 @@ _Note: Running the `steamcmd.sh` as `root` will fail because the owner is the us
 
 Wine 11 no longer provides the `wine64` binary. You just need to call `wine` against the dedicated server binary, preferrably via `gosu` as the steam user.
 
+## Image Info
+
 This image is also available via ghcr.io/teejo75/steamcmd-wine
 
-The image will automatically update on the 1st day of the month to account for security updates.
+The image will automatically update whenever steamcmd-base updates.
+
+If you have an image that uses this image as a base, and you would like your build workflow to trigger whenever this image updates, then open an issue with the name of your repo.
+
+See [Action Repository Dispatch](https://github.com/peter-evans/repository-dispatch).
+
+In your build workflow, add an event as follows:
+```yaml
+on:
+    repository_dispatch:
+        types: [steamcmd-wine-updated]
+```
+
+And so you know what triggered the workflow, you can add the following job before your main build job:
+
+```yaml
+jobs:
+  echo-base-update:
+    if: github.event_name == 'repository_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo base image update
+        run: echo "Base image steamcmd-wine has been updated, triggering rebuild of this image. ImageID ${{ github.event.client_payload.imageid }} Digest ${{ github.event.client_payload.digest }}"
+
+```
