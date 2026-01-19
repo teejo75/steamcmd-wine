@@ -13,3 +13,5 @@ _Note: Running the `steamcmd.sh` as `root` will fail because the owner is the us
 Wine 11 no longer provides the `wine64` binary. You just need to call `wine` against the dedicated server binary, preferrably via `gosu` as the steam user.
 
 This image is also available via ghcr.io/teejo75/steamcmd-wine
+
+The image will automatically update on the 1st day of the month to account for security updates.
